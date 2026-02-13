@@ -11,7 +11,7 @@
 
 
 
-<title>Portfolio 2</title>
+<title>Hand-Plotted: Black History Month</title>
 
 <script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -290,7 +290,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Portfolio 2</h1>
+<h1 class="title toc-ignore">Hand-Plotted: Black History Month</h1>
 
 </div>
 
@@ -302,16 +302,65 @@ of the goal, the product (computer program, hand graph, computer graph,
 etc.), the data, and some interpretation. Reports must be reproducible
 and of high quality in terms of writing, grammar, presentation, etc.</p>
 </blockquote>
+<p>33, 45, 34</p>
 <pre class="r"><code>library(ggplot2)</code></pre>
-<pre class="r"><code>black_historyp &lt;- data.frame(
-letter_1 = c(1,1,1,2,2,2, 1.5, 1.5, 1.5, 4, 4, 4, 5, 6, 8, 8, 8, 9, 10, 10, 10, 12, 12, 12, 13,13, 9, 16, 16.5, 16, 16, 17, 17, 1, 1, 1, 2, 3, 3, 3, 5, 5, 5, 7, 7, 7.5, 8, 8, 8.5, 9, 9, 10, 11, 12, 11, 11, 14, 14, 14, 15, 16, 16, 16, 15, 18, 18, 18, 18.5, 19, 18.7, 19, 20, 22, 22.5, 24, 23.5, 23, 23, 17, 17, 17, 18, 19, 19, 19, 1, 1, 1, 2, 3, 3, 3, 5, 5, 5, 6, 6, 7, 7, 7, 9, 9, 9, 10, 11, 11, 11, 13, 14, 15, 14, 14),
-
-letter_2 = c(13, 12, 11, 13, 12, 11, 12, 13, 11, 11, 12, 13, 11, 11, 11, 12, 13, 13, 13, 12, 11, 11, 12, 13, 13, 11, 12, 11, 12, 12, 13, 13, 11, 6, 7, 8, 7, 6, 7, 8, 6, 7, 8, 6, 8, 7, 8, 6, 7, 8, 6, 8, 8, 8, 7, 6, 6, 7, 8, 8, 8, 7, 6, 6, 6, 7, 8, 7, 8, 7.5, 6.5, 6, 8, 7, 8, 7, 6, 5, 1, 2, 3, 2, 3, 2, 1, 1, 2, 3, 2, 3, 2, 1, 1, 2, 3, 1, 3, 1, 2, 3, 1, 2, 3, 2, 1, 2, 3, 3, 3, 3, 2, 1)
+<pre class="r"><code># 1. Create the data frame with your coordinates
+black_historyp &lt;- data.frame(
+  letter_1 = c(1,1,1,2,2,2, 1.5, 1.5, 1.5, 4, 4, 4, 5, 6, 8, 8, 8, 9, 10, 10, 10, 12, 12, 12, 13,13, 9, 16, 16.5, 16, 16, 17, 17, 1, 1, 1, 2, 3, 3, 3, 5, 5, 5, 7, 7, 7.5, 8, 8, 8.5, 9, 9, 10, 11, 12, 11, 11, 14, 14, 14, 15, 16, 16, 16, 15, 18, 18, 18, 18.5, 19, 18.7, 19, 20, 22, 22.5, 24, 23.5, 23, 23, 17, 17, 17, 18, 19, 19, 19, 1, 1, 1, 2, 3, 3, 3, 5, 5, 5, 6, 6, 7, 7, 7, 9, 9, 9, 10, 11, 11, 11, 13, 14, 15, 14, 14),
+  letter_2 = c(13, 12, 11, 13, 12, 11, 12, 13, 11, 11, 12, 13, 11, 11, 11, 12, 13, 13, 13, 12, 11, 11, 12, 13, 13, 11, 12, 11, 12, 12, 13, 13, 11, 6, 7, 8, 7, 6, 7, 8, 6, 7, 8, 6, 8, 7, 8, 6, 7, 8, 6, 8, 8, 8, 7, 6, 6, 7, 8, 8, 8, 7, 6, 6, 6, 7, 8, 7, 8, 7.5, 6.5, 6, 8, 7, 8, 7, 6, 5, 1, 2, 3, 2, 3, 2, 1, 1, 2, 3, 2, 3, 2, 1, 1, 2, 3, 1, 3, 1, 2, 3, 1, 2, 3, 2, 1, 2, 3, 3, 3, 3, 2, 1)
 )</code></pre>
-<pre class="r"><code>ggplot(black_historyp, aes( x = letter_1, y = letter_2)) +
-geom_point(size = 3, color = &quot;darkgreen&quot;) +
-labs(title = &quot;Black History Month&quot;)</code></pre>
-<p><img src="p02_files/figure-html/unnamed-chunk-3-1.png" alt="" width="672" /></p>
+<pre class="r"><code># 2. Add the labels based on your counts
+black_historyp$Word &lt;- c(
+  rep(&quot;BLACK&quot;, 33), 
+  rep(&quot;HISTORY&quot;, 45), 
+  rep(&quot;MONTH&quot;, 34)
+)</code></pre>
+<pre class="r"><code># 2. Plot it with separate colors and groups
+ggplot(black_historyp, aes(x = letter_1, y = letter_2, color = Word)) +
+  geom_point(size = 3) + 
+  scale_color_manual(values = c(
+    &quot;BLACK&quot; = &quot;black&quot;,   
+    &quot;HISTORY&quot; = &quot;red&quot;,
+    &quot;MONTH&quot; = &quot;yellow&quot;
+  )) +
+  coord_fixed() + 
+  labs(title = &quot;Hand-Plotted: Black History Month&quot;,
+       subtitle = &quot;Soulaan-inspired color palette&quot;)</code></pre>
+<p><img src="p02_files/figure-html/unnamed-chunk-4-1.png" alt="" width="672" /></p>
+<div
+id="goal-the-goal-of-this-project-was-to-explore-the-intersection-of-data-visualization-and-digital-art.-i-wanted-to-celebrate-black-history-month-by-manually-drawing-text-using-a-scatter-plot.-this-portfolio-piece-challenged-me-to-think-about-data-points-as-spatial-coordinates-rather-than-just-numbers-plus-i-wanted-to-represent-my-cultural-pride-using-the-colors-of-the-soulaan-flag."
+class="section level1">
+<h1>Goal: The goal of this project was to explore the intersection of
+data visualization and digital art. I wanted to celebrate Black History
+Month by manually drawing text using a scatter plot. This portfolio
+piece challenged me to think about data points as spatial coordinates
+rather than just numbers, plus I wanted to represent my cultural pride
+using the colors of the Soulaan flag.</h1>
+</div>
+<div
+id="product-i-created-a-custom-scatter-plot-using-ggplot2-in-r.-this-is-a-coordinate-mapped-plot-where-each-point-was-manually-placed-to-spell-out-the-words-black-history-month.-i-mapped-out-the-points-and-visualized-them-on-a-plot-using-notebook-paper."
+class="section level1">
+<h1>Product: I created a custom scatter plot using ggplot2 in R. This is
+a coordinate-mapped plot where each point was manually placed to spell
+out the words “BLACK HISTORY MONTH.” I mapped out the points and
+visualized them on a plot using notebook paper.</h1>
+</div>
+<div
+id="data-the-data-was-manually-created-by-me.-there-are-a-total-of-112-observations-and-3-variables."
+class="section level1">
+<h1>Data: The data was manually created by me. There are a total of 112
+observations and 3 variables.</h1>
+</div>
+<div
+id="interpretation-the-entire-process-of-manually-inputting-data-and-drawing-it-out-on-paper-took-longer-than-i-expected.-mapping-out-the-s-was-the-most-difficult-part.-other-than-that-i-found-the-entire-experience-to-be-very-enjoyable-and-a-great-way-to-show-off-my-heritage-something-i-am-way-down-to-do.-entering-each-singular-coordinate-was-actually-soothing-and-made-me-enjoy-the-art-of-coding-much-more."
+class="section level1">
+<h1>Interpretation: The entire process of manually inputting data and
+drawing it out on paper took longer than I expected. Mapping out the ‘S’
+was the most difficult part. Other than that, I found the entire
+experience to be very enjoyable and a great way to show off my heritage,
+something I am way down to do. Entering each singular coordinate was
+actually soothing and made me enjoy the art of coding much more.</h1>
+</div>
 
 
 

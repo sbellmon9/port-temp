@@ -1,25 +1,53 @@
 ---
-title: "Portfolio 2"
+title: "Hand-Plotted: Black History Month"
 ---
 
 > The projects should be numbered consecutively (i.e., in the order in which you began them), and should include for each project a description of the goal, the product (computer program, hand graph, computer graph, etc.), the data, and some interpretation. Reports must be reproducible and of high quality in terms of writing, grammar, presentation, etc.
+
+
+
+33, 45, 34
 
 ```{r}
 library(ggplot2)
 ```
 
 ```{r}
+# 1. Create the data frame with your coordinates
 black_historyp <- data.frame(
-letter_1 = c(1,1,1,2,2,2, 1.5, 1.5, 1.5, 4, 4, 4, 5, 6, 8, 8, 8, 9, 10, 10, 10, 12, 12, 12, 13,13, 9, 16, 16.5, 16, 16, 17, 17, 1, 1, 1, 2, 3, 3, 3, 5, 5, 5, 7, 7, 7.5, 8, 8, 8.5, 9, 9, 10, 11, 12, 11, 11, 14, 14, 14, 15, 16, 16, 16, 15, 18, 18, 18, 18.5, 19, 18.7, 19, 20, 22, 22.5, 24, 23.5, 23, 23, 17, 17, 17, 18, 19, 19, 19, 1, 1, 1, 2, 3, 3, 3, 5, 5, 5, 6, 6, 7, 7, 7, 9, 9, 9, 10, 11, 11, 11, 13, 14, 15, 14, 14),
-
-letter_2 = c(13, 12, 11, 13, 12, 11, 12, 13, 11, 11, 12, 13, 11, 11, 11, 12, 13, 13, 13, 12, 11, 11, 12, 13, 13, 11, 12, 11, 12, 12, 13, 13, 11, 6, 7, 8, 7, 6, 7, 8, 6, 7, 8, 6, 8, 7, 8, 6, 7, 8, 6, 8, 8, 8, 7, 6, 6, 7, 8, 8, 8, 7, 6, 6, 6, 7, 8, 7, 8, 7.5, 6.5, 6, 8, 7, 8, 7, 6, 5, 1, 2, 3, 2, 3, 2, 1, 1, 2, 3, 2, 3, 2, 1, 1, 2, 3, 1, 3, 1, 2, 3, 1, 2, 3, 2, 1, 2, 3, 3, 3, 3, 2, 1)
+  letter_1 = c(1,1,1,2,2,2, 1.5, 1.5, 1.5, 4, 4, 4, 5, 6, 8, 8, 8, 9, 10, 10, 10, 12, 12, 12, 13,13, 9, 16, 16.5, 16, 16, 17, 17, 1, 1, 1, 2, 3, 3, 3, 5, 5, 5, 7, 7, 7.5, 8, 8, 8.5, 9, 9, 10, 11, 12, 11, 11, 14, 14, 14, 15, 16, 16, 16, 15, 18, 18, 18, 18.5, 19, 18.7, 19, 20, 22, 22.5, 24, 23.5, 23, 23, 17, 17, 17, 18, 19, 19, 19, 1, 1, 1, 2, 3, 3, 3, 5, 5, 5, 6, 6, 7, 7, 7, 9, 9, 9, 10, 11, 11, 11, 13, 14, 15, 14, 14),
+  letter_2 = c(13, 12, 11, 13, 12, 11, 12, 13, 11, 11, 12, 13, 11, 11, 11, 12, 13, 13, 13, 12, 11, 11, 12, 13, 13, 11, 12, 11, 12, 12, 13, 13, 11, 6, 7, 8, 7, 6, 7, 8, 6, 7, 8, 6, 8, 7, 8, 6, 7, 8, 6, 8, 8, 8, 7, 6, 6, 7, 8, 8, 8, 7, 6, 6, 6, 7, 8, 7, 8, 7.5, 6.5, 6, 8, 7, 8, 7, 6, 5, 1, 2, 3, 2, 3, 2, 1, 1, 2, 3, 2, 3, 2, 1, 1, 2, 3, 1, 3, 1, 2, 3, 1, 2, 3, 2, 1, 2, 3, 3, 3, 3, 2, 1)
 )
 ```
 
 ```{r}
-ggplot(black_historyp, aes( x = letter_1, y = letter_2)) +
-geom_point(size = 3, color = "darkgreen") +
-labs(title = "Black History Month")
+# 2. Add the labels based on your counts
+black_historyp$Word <- c(
+  rep("BLACK", 33), 
+  rep("HISTORY", 45), 
+  rep("MONTH", 34)
+)
 ```
 
+```{r}
+# 2. Plot it with separate colors and groups
+ggplot(black_historyp, aes(x = letter_1, y = letter_2, color = Word)) +
+  geom_point(size = 3) + 
+  scale_color_manual(values = c(
+    "BLACK" = "black",   
+    "HISTORY" = "red",
+    "MONTH" = "yellow"
+  )) +
+  coord_fixed() + 
+  labs(title = "Hand-Plotted: Black History Month",
+       subtitle = "Soulaan-inspired color palette")
+```
 
+# Goal: The goal of this project was to explore the intersection of data visualization and digital art. I wanted to celebrate Black History Month by manually drawing text using a scatter plot. This portfolio piece challenged me to think about data points as spatial coordinates rather than just numbers, plus I wanted to represent my cultural pride using the colors of the Soulaan flag.
+
+# Product: I created a custom scatter plot using ggplot2 in R. This is a coordinate-mapped plot where each point was manually placed to spell out the words "BLACK HISTORY MONTH." I mapped out the points and visualized them on a plot using notebook paper.
+
+# Data: The data was manually created by me. There are a total of 112 observations and 3 variables.
+
+
+# Interpretation: The entire process of manually inputting data and drawing it out on paper took longer than I expected. Mapping out the 'S' was the most difficult part. Other than that, I found the entire experience to be very enjoyable and a great way to show off my heritage, something I am way down to do. Entering each singular coordinate was actually soothing and made me enjoy the art of coding much more. 
