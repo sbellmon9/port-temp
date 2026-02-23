@@ -3,3 +3,26 @@ title: "Portfolio 3"
 ---
 
 > The projects should be numbered consecutively (i.e., in the order in which you began them), and should include for each project a description of the goal, the product (computer program, hand graph, computer graph, etc.), the data, and some interpretation. Reports must be reproducible and of high quality in terms of writing, grammar, presentation, etc.
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+# 1. Create the data frame with your coordinates
+black_historyp <- data.frame(
+  years = c(1950, 1955, 1960, 1955, 1955, 1955, 1955, 1955, 1955, 1955, 1955, 1955, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1980, 1980, 1980, 1980, 1980, 1980, 1980, 1980, 1980, 1985, 1980, 1975, 1956, 1957, 1958, 1959, 1960, 1961, 1974, 1975, 1976, 1977, 1978, 1979),
+  black_music_matters = c(2,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11,11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11)
+)
+```
+
+
+```{r}
+# 2. Plot it with separate colors and groups
+ggplot(black_historyp, aes(x = years, y = black_music_matters)) +
+  geom_point(size = 3) + 
+  coord_fixed() + 
+  labs(title = "Hand-Plotted: Cover Song History Visualiztion",
+       subtitle = "African American Erasure in the Music Industry")
+```
+
