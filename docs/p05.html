@@ -11,7 +11,7 @@
 
 
 
-<title>Portfolio 5</title>
+<title>Black Barbie Milestones</title>
 
 <script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -290,7 +290,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Portfolio 5</h1>
+<h1 class="title toc-ignore">Black Barbie Milestones</h1>
 
 </div>
 
@@ -302,6 +302,64 @@ of the goal, the product (computer program, hand graph, computer graph,
 etc.), the data, and some interpretation. Reports must be reproducible
 and of high quality in terms of writing, grammar, presentation, etc.</p>
 </blockquote>
+<pre class="r"><code># Load library
+library(ggplot2)
+
+# Data: Years of major Black Barbie milestones
+years &lt;- c(1967, 1968, 1980, 2009, 2016, 2024)
+milestones &lt;- c(&quot;Francie (First)&quot;, &quot;Christie&quot;, &quot;Official &#39;Black Barbie&#39;&quot;, 
+                &quot;So In Style&quot;, &quot;Body Diversity&quot;, &quot;Modern Icon&quot;)
+
+# Create data frame
+barbie_data &lt;- data.frame(years, milestones)
+
+# Create timeline plot
+ggplot(barbie_data, aes(x = years, y = 0)) +
+  geom_point(color = &quot;pink&quot;, size = 4) +
+  geom_text(aes(label = milestones), 
+            vjust = -1, size = 3.5) +
+  geom_hline(yintercept = 0) +
+  theme_minimal() +
+  labs(title = &quot;Timeline of Major Black Barbie Milestones&quot;,
+       x = &quot;Year&quot;,
+       y = &quot;&quot;) +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank())</code></pre>
+<p><img src="p05_files/figure-html/unnamed-chunk-1-1.png" alt="" width="672" /></p>
+<div
+id="goal-the-goal-of-this-project-was-to-visualize-the-representation-gap-in-american-toy-history.-by-mapping-the-release-years-of-major-black-barbie-milestones-i-wanted-to-quantify-how-long-it-took-for-the-barbie-brand-to-authentically-reflect-black-beauty."
+class="section level1">
+<h1>Goal: The goal of this project was to visualize the “Representation
+Gap” in American toy history. By mapping the release years of major
+Black Barbie milestones, I wanted to quantify how long it took for the
+“Barbie” brand to authentically reflect Black beauty.</h1>
+</div>
+<div
+id="product-i-created-a-timeline-dot-plot-in-r-using-a-custom-barbie-pink.-this-visualization-uses-a-horizontal-coordinate-system-to-emphasize-the-chronological-distance-between-milestones-moving-from-the-1960s-friend-dolls-to-the-official-naming-of-a-black-barbie-in-1980."
+class="section level1">
+<h1>Product: I created a Timeline Dot Plot in R using a custom Barbie
+Pink. This visualization uses a horizontal coordinate system to
+emphasize the chronological distance between milestones, moving from the
+1960s “friend” dolls to the official naming of a Black Barbie in
+1980.</h1>
+</div>
+<div
+id="data.-the-x-axis-represents-a-timeline-from-the-launch-of-the-original-barbie-1959-to-the-present-day.-i-used-specific-data-points-for-firsts-1967-1968-1980-2009-2016-to-show-the-density-of-progress-over-time."
+class="section level1">
+<h1>Data:. The x-axis represents a timeline from the launch of the
+original Barbie (1959) to the present day. I used specific data points
+for “Firsts” (1967, 1968, 1980, 2009, 2016) to show the density of
+progress over time.</h1>
+</div>
+<div
+id="interpretation-the-most-surprising-discovery-in-this-plot-is-the-21-year-gap-between-the-first-barbie-and-the-first-black-doll-allowed-to-use-the-barbie-title.-the-plot-shows-a-sparse-distribution-in-the-20th-century-which-transforms-into-a-dense-cluster-of-milestones-in-the-21st-century-reflecting-a-modern-acceleration-in-cultural-inclusivity."
+class="section level1">
+<h1>Interpretation: The most surprising discovery in this plot is the
+21-year gap between the first Barbie and the first Black doll allowed to
+use the “Barbie” title. The plot shows a sparse distribution in the 20th
+century, which transforms into a dense cluster of milestones in the 21st
+century, reflecting a modern acceleration in cultural inclusivity.</h1>
+</div>
 
 
 

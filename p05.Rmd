@@ -1,5 +1,40 @@
 ---
-title: "Portfolio 5"
+title: "Black Barbie Milestones"
 ---
 
 > The projects should be numbered consecutively (i.e., in the order in which you began them), and should include for each project a description of the goal, the product (computer program, hand graph, computer graph, etc.), the data, and some interpretation. Reports must be reproducible and of high quality in terms of writing, grammar, presentation, etc.
+
+```{r}
+# Load library
+library(ggplot2)
+
+# Data: Years of major Black Barbie milestones
+years <- c(1967, 1968, 1980, 2009, 2016, 2024)
+milestones <- c("Francie (First)", "Christie", "Official 'Black Barbie'", 
+                "So In Style", "Body Diversity", "Modern Icon")
+
+# Create data frame
+barbie_data <- data.frame(years, milestones)
+
+# Create timeline plot
+ggplot(barbie_data, aes(x = years, y = 0)) +
+  geom_point(color = "pink", size = 4) +
+  geom_text(aes(label = milestones), 
+            vjust = -1, size = 3.5) +
+  geom_hline(yintercept = 0) +
+  theme_minimal() +
+  labs(title = "Timeline of Major Black Barbie Milestones",
+       x = "Year",
+       y = "") +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank())
+```
+
+
+# Goal: The goal of this project was to visualize the "Representation Gap" in American toy history. By mapping the release years of major Black Barbie milestones, I wanted to quantify how long it took for the "Barbie" brand to authentically reflect Black beauty.
+
+# Product: I created a Timeline Dot Plot in R using a custom Barbie Pink. This visualization uses a horizontal coordinate system to emphasize the chronological distance between milestones, moving from the 1960s "friend" dolls to the official naming of a Black Barbie in 1980.
+
+# Data:. The x-axis represents a timeline from the launch of the original Barbie (1959) to the present day. I used specific data points for "Firsts" (1967, 1968, 1980, 2009, 2016) to show the density of progress over time.
+
+# Interpretation: The most surprising discovery in this plot is the 21-year gap between the first Barbie and the first Black doll allowed to use the "Barbie" title. The plot shows a sparse distribution in the 20th century, which transforms into a dense cluster of milestones in the 21st century, reflecting a modern acceleration in cultural inclusivity.
