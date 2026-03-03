@@ -11,7 +11,7 @@
 
 
 
-<title>Portfolio 4</title>
+<title>Cowboy Carter Viz</title>
 
 <script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -290,18 +290,75 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Portfolio 4</h1>
+<h1 class="title toc-ignore">Cowboy Carter Viz</h1>
 
 </div>
 
 
-<blockquote>
-<p>The projects should be numbered consecutively (i.e., in the order in
-which you began them), and should include for each project a description
-of the goal, the product (computer program, hand graph, computer graph,
-etc.), the data, and some interpretation. Reports must be reproducible
-and of high quality in terms of writing, grammar, presentation, etc.</p>
-</blockquote>
+<pre class="r"><code># 1. Load the library we need for plotting
+library(ggplot2)</code></pre>
+<pre class="r"><code># Insert Cowboy Carter Lyric Data
+
+songs &lt;- c(&quot;Ameriican Requiem&quot;, &quot;Blackbird&quot;, &quot;16 Carriages&quot;, &quot;Texas Hold &#39;Em&quot;, 
+           &quot;Spaghettii&quot;, &quot;Alligator Tears&quot;, &quot;Ya Ya&quot;, &quot;II Hands II Heaven&quot;, 
+           &quot;Tyrant&quot;, &quot;Sweet Honey Buckin&quot;)
+
+lyrics &lt;- c(472, 169, 448, 534, 366, 227, 562, 621, 638, 740)
+
+initials &lt;- c(&quot;AR&quot;, &quot;B&quot;, &quot;16C&quot;, &quot;TH&quot;, &quot;S&quot;, &quot;AT&quot;, &quot;Y&quot;, &quot;HH&quot;, &quot;T&quot;, &quot;SHB&quot;)
+
+# Create your data frame
+df &lt;- data.frame(songs, lyrics)
+
+#Create Plot
+ggplot(df, aes(x = reorder(songs, lyrics), y = lyrics)) +
+  geom_bar(stat = &quot;identity&quot;, fill = &quot;#8B0000&quot;, color = &quot;black&quot;, width = 0.7) + 
+  coord_flip() + 
+  theme_minimal() +
+  labs(
+    title = &quot;Lyrical Density: Cowboy Carter&quot;,
+    subtitle = &quot;Analysis of word counts across key tracks&quot;,
+    x = &quot;&quot;,
+    y = &quot;Number of Lyrics&quot;
+  )</code></pre>
+<p><img src="p04_files/figure-html/unnamed-chunk-2-1.png" alt="" width="672" /></p>
+<div
+id="goal-the-goal-of-this-project-was-to-visualize-the-creative-magnitude-and-density-of-beyoncés-cowboy-carter.-by-mapping-the-lyrical-density-of-key-tracks-i-wanted-to-showcase-how-this-album-reclaimed-the-country-genre-not-just-through-sound-but-through-an-intentional-dense-narrative-of-black-history-and-resilience."
+class="section level1">
+<h1>Goal: The goal of this project was to visualize the creative
+magnitude and density of Beyoncé’s Cowboy Carter. By mapping the lyrical
+density of key tracks, I wanted to showcase how this album reclaimed the
+Country genre not just through sound but through an intentional, dense
+narrative of Black history and resilience.</h1>
+</div>
+<div
+id="product-i-created-a-horizontal-bar-plot.-unlike-a-vertical-chart-the-horizontal-orientation-allows-for-a-more-readable-list-like-comparison-of-tracks-mirroring-the-tracklist-of-a-vinyl-record.-i-used-a-deep-maroon-and-black-aesthetic-to-pay-homage-to-the-rodeo-and-outlaw-themes-of-the-album-while-maintaining-a-clean-analytical-look."
+class="section level1">
+<h1>Product: I created a Horizontal Bar Plot. Unlike a vertical chart,
+the horizontal orientation allows for a more readable, list-like
+comparison of tracks, mirroring the tracklist of a vinyl record. I used
+a deep maroon and black aesthetic to pay homage to the rodeo and outlaw
+themes of the album while maintaining a clean, analytical look.</h1>
+</div>
+<div
+id="data-i-mapped-the-x-axis-to-the-specific-number-of-lyrics-ranging-from-169-to-740-words-and-the-y-axis-to-the-track-titles.-i-used-an-ordering-transformation-to-sort-the-tracks-from-the-most-acoustic-to-the-most-lyrically-dense-allowing-for-a-clear-visual-crescendo."
+class="section level1">
+<h1>Data: I mapped the x-axis to the specific Number of Lyrics (ranging
+from 169 to 740 words) and the y-axis to the Track Titles. I used an
+ordering transformation to sort the tracks from the most acoustic to the
+most lyrically dense, allowing for a clear visual crescendo.</h1>
+</div>
+<div
+id="interpretation-what-i-discovered-during-this-process-was-that-the-album-follows-a-distinct-creative-expansion.-by-starting-with-the-intimate-foundations-of-blackbird-169-words-the-data-shows-a-steady-climb-toward-the-high-energy-multi-layered-storytelling-of-sweet-honey-buckiin-740-words.-this-visualization-reveals-that-the-albums-complexity-isnt-random-it-is-a-calculated-build-up-that-honors-the-depth-of-black-songwriting."
+class="section level1">
+<h1>Interpretation: What I discovered during this process was that the
+album follows a distinct creative expansion. By starting with the
+intimate foundations of Blackbird (169 words), the data shows a steady
+climb toward the high-energy, multi-layered storytelling of Sweet Honey
+Buckiin (740 words). This visualization reveals that the album’s
+complexity isn’t random; it is a calculated build-up that honors the
+depth of Black songwriting.</h1>
+</div>
 
 
 
